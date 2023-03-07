@@ -1,34 +1,15 @@
-import React, { useState , useEffect} from 'react'
+
 import BlogList from './BlogList'
+import useFetch from './UseFetch'
 
 const Home = () => {
-const [blogs, setBlogs]= useState(null)
-const [isloading, setIsLoading]= useState(true)
-const [error, setError]= useState(null)
+const {data, isloading, error} =useFetch('http://localhost:8000/blogs')
 
 
 //skapar ny array som filtreras och sparas i newBlogs, raderar en i taget genom id
 
 
-//hämtar data från jsonserver
-useEffect(()=>{
-fetch('http://localhost:8000/blogs')
-.then(res => {
-  if(!res.ok){
-  throw Error('could not fetch')
-  }
-  return res.json()
-})
-.then((data)=>{
-  setBlogs(data)
-  setIsLoading(false)
-  setError(null)
-})
-.catch(err =>{
-  setIsLoading(false)
-  setError(err.message)
-})
-},[])
+
 
 //mappar/visar igenom alla bloggar, med key property
 //lägg in vilka props du vill skicka till förälder i <BlogList/> som är child
@@ -38,11 +19,13 @@ fetch('http://localhost:8000/blogs')
     <div className='home'>
       {error &&  <div>{error}</div>}
       {isloading &&  <div>Loading...</div>}
-      {blogs && <BlogList  blogs={blogs} title='All Blogs!' />}
-      {blogs && <BlogList  blogs={blogs.filter((blog)=> blog.author === 'Lizzy')} title='Lizzys Blogs!'/>}
+      {data && <BlogList  blogs={data} title='All Blogs!' />}
+      {data && <BlogList  blogs={data.filter((blog)=> blog.author === 'Lizzy')} title='Lizzys Blogs!'/>}
        
     </div>
   )
 }
 
 export default Home
+
+//starta server   npx json-server --watch data/db.json --port 8000
