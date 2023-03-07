@@ -4,7 +4,7 @@ import useFetch from './UseFetch'
 
 const BlogDetails = () => {
 const {id}= useParams()
-const {data: blog, error, isloading}= useFetch('http://localhost:8000/blogs/' + id);
+const {data: blog , error, isloading}= useFetch('http://localhost:8000/blogs/' + id);
 const navigate= useNavigate()
 
 //delete function

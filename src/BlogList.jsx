@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const BlogList = ({blogs, title}) => {
-  //håmtar props från förälder
+  //hämtar props från förälder
   // const blogs = props.blogs;
   // const title = props.title;
   // console.log(props.blogs)
@@ -20,7 +20,6 @@ const BlogList = ({blogs, title}) => {
     <p>Written by { blog.author}</p>
     </Link>
     </div>
-
     ))}
    </div>
   )
