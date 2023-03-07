@@ -8,9 +8,6 @@ const {data, isloading, error} =useFetch('http://localhost:8000/blogs')
 
 //skapar ny array som filtreras och sparas i newBlogs, raderar en i taget genom id
 
-
-
-
 //mappar/visar igenom alla bloggar, med key property
 //lägg in vilka props du vill skicka till förälder i <BlogList/> som är child
 //filter tar bort alla bloggar som inte är Lizzy

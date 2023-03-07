@@ -22,7 +22,6 @@ function App() {
             <Route path='/create' element={<Create />} />
             <Route path='/blogs/:id' element={<BlogDetails />} />
             <Route path='*' element={<NotFound />} />
-
           </Routes>
         </div>
       </div>
